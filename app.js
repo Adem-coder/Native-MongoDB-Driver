@@ -17,7 +17,11 @@ client.connect(function(err){
     console.log('connected successfully to server');
 
     const db = client.db(dbName);
-    client.close();
+
+    insertDocuments(db, function(){
+        client.close();
+    });
+    
 });
 
 const insertDocuments = function(db, callback){
@@ -47,3 +51,4 @@ const insertDocuments = function(db, callback){
         callback(result);
     });
 }
+
