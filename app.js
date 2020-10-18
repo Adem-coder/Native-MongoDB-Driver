@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/fruitsDB', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const fruitSchema = new mongoose.Schema ({
-    name: String,
+    name: {
+        type: String,
+        required: [true, "Plese check your data entry no name specified"]
+      },
     rating:{
         type: Number,
         min: 1,
@@ -16,9 +19,9 @@ const fruitSchema = new mongoose.Schema ({
 const Fruit = mongoose.model("Fruit", fruitSchema);
 
 const fruit = new Fruit ({
-    name: "Apple",
-    rating:11,
-    review: "Pretty solid as a fruit."
+  
+    rating:10,
+    review: "Peaches are good"
 });
 
 fruit.save();
