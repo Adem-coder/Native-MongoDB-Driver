@@ -51,22 +51,26 @@ const orange = new Fruit({
     review: "Better than most"
 });
 
-Fruit.insertMany([kiwi, orange, banana], function(err){
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("Succesfully saved all the fruits to fruitsDB");
-    }
-});
+// Fruit.insertMany([kiwi, orange, banana], function(err){
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("Succesfully saved all the fruits to fruitsDB");
+//     }
+// });
 
-const findDocuments = function(db, callback){
-    // Get the documents collection
-    const collection = db.collection('fruits');
-    // Find some documents
-    collection.find({}).toArray(function(err, fruits){
-        assert.equal(err, null);
-        console.log("Found the following records");
+Fruit.find(function(err, fruits){
+    
+    if (err){
+        console.log(err);
+
+    mongoose.connection.close();
+
+    }else{
         console.log(fruits);
-        callback(fruits);
+    
+    fruits.forEach(function(fruit){
+        console.log(fruit.name);
     });
-};
+}
+});
