@@ -28,19 +28,44 @@ const fruit = new Fruit ({
 
 const personSchema = new mongoose.Schema ({
     name: String,
-    age: Number
+    age: Number,
+    favoriteFruit: fruitSchema
     
 }); 
 // mongoose model
 const Person = mongoose.model("Person", personSchema);
 
+// const pineapple = new Fruit({
+//     name: "pineapple",
+//     score: 9,
+//     review: "Great fruit"
+// });
+// // pineapple.save();
+
+// const person = new Person ({
+//     name: "Amy",
+//     age: 12,
+//     favoriteFruit: pineapple
+    
+// });
+
+// person.save();
+
+const mango = new Fruit({
+    name: "mango",
+    score: 10,
+    review: "Great"
+});
+mango.save();
+
 const person = new Person ({
     name: "John",
-    age: 37
+    age: 37,
+    favoriteFruit: mango
     
 });
 
-
+person.save();
 
 
 Fruit.find(function(err, fruits){
@@ -73,10 +98,10 @@ Fruit.find(function(err, fruits){
 //         console.log("Successfully deketed");
 //     }
 // });
-Person.deleteMany({name: "John"}, function(err){
-    if (err){
-        console.log(err);
-    } else{
-        console.log("Deleted");
-    }
-});
+// Person.deleteMany({name: "John"}, function(err){
+//     if (err){
+//         console.log(err);
+//     } else{
+//         console.log("Deleted");
+//     }
+// });
