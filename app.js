@@ -40,7 +40,7 @@ const person = new Person ({
     
 });
 
-// person.save();
+
 
 
 Fruit.find(function(err, fruits){
@@ -48,7 +48,7 @@ Fruit.find(function(err, fruits){
     if (err){
         console.log(err);
 
-    mongoose.connection.close();
+        mongoose.connection.close()
 
     }else{
         console.log(fruits);
@@ -58,11 +58,25 @@ Fruit.find(function(err, fruits){
     });
 }
 });
-Fruit.updateOne({_id:"5f8c059ea62f7c43788672dd"}, { name: "Peach"}, function(err){
-    if (err) {
+// Fruit.updateOne({_id:"5f8c059ea62f7c43788672dd"}, { name: "Peach"}, function(err){
+//     if (err) {
+//         console.log(err);
+//     } else{
+//         console.log("Successfull");
+//     }
+
+// });
+// Fruit.deleteOne({name: "Peach"}, function(err){
+//     if (err){
+//         console.log(err);   
+//     } else{
+//         console.log("Successfully deketed");
+//     }
+// });
+Person.deleteMany({name: "John"}, function(err){
+    if (err){
         console.log(err);
     } else{
-        console.log("Successfull");
+        console.log("Deleted");
     }
-
 });
